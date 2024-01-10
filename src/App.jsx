@@ -3,10 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 function App() {
-  const [currLocationJs, setCurrLocationJs] = useState({
-    latitude: 32.07953127200945,
-    longitude: 34.76931791534278,
-  });
+  const [currLocationJs, setCurrLocationJs] = useState();
 
   useEffect(() => {
     const getLocationJs = () => {
