@@ -7,6 +7,8 @@ import axios from "axios";
 
 function App() {
   const [location, setLocation] = useState(null);
+  const [userLatitude, setUserLatitude] = useState("");
+  const [userLongitude, setUserLongitude] = useState("");
 
   useEffect(() => {
     const watchId = navigator.geolocation.watchPosition(
@@ -17,7 +19,10 @@ function App() {
         // You can send the location data to your server or perform any other actions here.
         // Example: Sending data to a server using Axios
         axios
-          .post("https://65a06c86600f49256faff5ec.mockapi.io/coordinates", { latitude, longitude })
+          .post("https://65a06c86600f49256faff5ec.mockapi.io/coordinates", {
+            latitude,
+            longitude,
+          })
           .then((response) => {
             console.log("Location data sent successfully:", response.data);
           })
@@ -36,6 +41,14 @@ function App() {
     };
   }, []);
 
+  const handleUserCoordinates = () => {
+    // Validate user input (you may add more validation as needed)
+    if (userLatitude.trim() === "" || userLongitude.trim() === "") {
+      alert("Please enter valid coordinates.");
+      return;
+    }
+  };
+
   return (
     <>
       <div>
@@ -46,7 +59,26 @@ function App() {
           </p>
         )}
       </div>
-      {/* <ButtonAppBar />
+      <div>
+        <label>
+          Enter Latitude:
+          <input
+            type="text"
+            value={userLatitude}
+            onChange={(e) => setUserLatitude(e.target.value)}
+          />
+        </label>
+        <label>
+          Enter Longitude:
+          <input
+            type="text"
+            value={userLongitude}
+            onChange={(e) => setUserLongitude(e.target.value)}
+          />
+        </label>
+        <button onClick={handleUserCoordinates}>Update Map</button>
+      </div>
+      <ButtonAppBar />
       <MapContainer
         center={[32.07953127200945, 34.76931791534278]}
         zoom={18}
@@ -65,7 +97,7 @@ function App() {
         <Marker position={[32.08605130872843, 34.768870639542655]}>
           <Popup>Location 3: Graffiti Art</Popup>
         </Marker>
-      </MapContainer> */}
+      </MapContainer>
     </>
   );
 }
