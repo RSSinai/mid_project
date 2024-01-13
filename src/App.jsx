@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState({latitude:0, longitude:0});
   const [userLatitude, setUserLatitude] = useState("");
   const [userLongitude, setUserLongitude] = useState("");
 
@@ -15,7 +15,7 @@ function App() {
       (position) => {
         const { latitude, longitude } = position.coords;
         setLocation({ latitude, longitude });
-
+        console.log(latitude)
         // You can send the location data to your server or perform any other actions here.
         // Example: Sending data to a server using Axios
         axios
@@ -94,7 +94,7 @@ function App() {
         <Marker position={[32.068944247417505, 34.76781237229591]}>
           <Popup>Location 2: Graffiti Art</Popup>
         </Marker>
-        <Marker position={[32.08605130872843, 34.768870639542655]}>
+        <Marker position={[location.latitude, location.longitude]}>
           <Popup>Location 3: Graffiti Art</Popup>
         </Marker>
       </MapContainer>
