@@ -6,21 +6,23 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Icon } from "leaflet";
 
+// markers
+const markers = [
+  {
+    geocode: [32.06812727294921, 34.763810682209794],
+    popUp: "Hello, I am pop up 1",
+  },
+  {
+    geocode: [32.068944247417505, 34.76781237229591],
+    popUp: "Hello, I am pop up 2",
+  },
+];
+
 function App() {
   const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
   const [userLatitude, setUserLatitude] = useState("");
   const [userLongitude, setUserLongitude] = useState("");
 
-  const markers = [
-    {
-      geoCode: [32.06812727294921, 34.763810682209794],
-      popUp: "Location 1: Graffiti Art",
-    },
-    {
-      geoCode: [32.068944247417505, 34.76781237229591],
-      popUp: "Location 2: Graffiti Art",
-    },
-  ];
   useEffect(() => {
     const watchId = navigator.geolocation.watchPosition(
       (position) => {
@@ -108,17 +110,19 @@ function App() {
           attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {markers.map((marker) => {
-          <Marker position={marker.geoCode} icon={customNewIcon}>
-            <Popup>{marker.popUp}</Popup>
-          </Marker>;
-        })}
+
         <Marker
           position={[location.latitude, location.longitude]}
           icon={customSelfIcon}
         >
           <Popup>This is me! </Popup>
         </Marker>
+        {/* Mapping through the markers */}
+        {markers.map((marker) => (
+          <Marker position={marker.geocode} icon={customNewIcon}>
+            <Popup>{marker.popUp}</Popup>
+          </Marker>
+        ))}
       </MapContainer>
     </>
   );
