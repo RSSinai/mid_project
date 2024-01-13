@@ -86,11 +86,7 @@ function App() {
       </div>
       <ButtonAppBar />
       <MapContainer
-        center={
-          location.latitude > 0
-            ? [location.latitude, location.longitude]
-            : [32.07953127200945, 34.76931791534278]
-        }
+        center={[location.latitude, location.longitude]}
         zoom={18}
         scrollWheelZoom
       >
