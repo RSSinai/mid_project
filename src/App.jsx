@@ -4,19 +4,23 @@ import "leaflet/dist/leaflet.css";
 import ButtonAppBar from "./components/navbar/Navbar";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Icon } from "leaflet";
+import  { Icon } from "leaflet";
+
 
 function App() {
-  const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
+  const [location, setLocation] = useState({latitude:0, longitude:0});
   const [userLatitude, setUserLatitude] = useState("");
   const [userLongitude, setUserLongitude] = useState("");
 
+  const markers = [
+    
+  ]
   useEffect(() => {
     const watchId = navigator.geolocation.watchPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
         setLocation({ latitude, longitude });
-
+     
         // You can send the location data to your server or perform any other actions here.
         // Example: Sending data to a server using Axios
         axios
@@ -50,18 +54,18 @@ function App() {
     }
   };
 
-  const customIcon = new Icon({
+  const customIcon = new Icon ({
     iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
     iconSize: [40, 41],
-  });
-
+  })
+  
   return (
     <>
       <div>
         <h1>Real-Time GPS Tracking</h1>
         {location && (
           <p>
-            Latitude: {location.latitude}, Longitude: {location.longitude}
+            Latitude: {(location.latitude)}, Longitude: {location.longitude}
           </p>
         )}
       </div>
@@ -86,7 +90,7 @@ function App() {
       </div>
       <ButtonAppBar />
       <MapContainer
-        center={[location.latitude, location.longitude]}
+        center={[32.07953127200945, 34.76931791534278]}
         zoom={18}
         scrollWheelZoom
       >
@@ -100,11 +104,8 @@ function App() {
         <Marker position={[32.068944247417505, 34.76781237229591]}>
           <Popup>Location 2: Graffiti Art</Popup>
         </Marker>
-        <Marker
-          position={[location.latitude, location.longitude]}
-          icon={customIcon}
-        >
-          <Popup>This is me! </Popup>
+        <Marker position={[location.latitude, location.longitude] } icon={customIcon}>
+          <Popup>This is me!   </Popup>
         </Marker>
       </MapContainer>
     </>
