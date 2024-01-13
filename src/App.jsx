@@ -4,23 +4,29 @@ import "leaflet/dist/leaflet.css";
 import ButtonAppBar from "./components/navbar/Navbar";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import  { Icon } from "leaflet";
-
+import { Icon } from "leaflet";
 
 function App() {
-  const [location, setLocation] = useState({latitude:0, longitude:0});
+  const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
   const [userLatitude, setUserLatitude] = useState("");
   const [userLongitude, setUserLongitude] = useState("");
 
   const markers = [
-    
-  ]
+    {
+      geoCode: [32.06812727294921, 34.763810682209794],
+      popUp: "Location 1: Graffiti Art",
+    },
+    {
+      geoCode: [32.068944247417505, 34.76781237229591],
+      popUp: "Location 2: Graffiti Art",
+    },
+  ];
   useEffect(() => {
     const watchId = navigator.geolocation.watchPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
         setLocation({ latitude, longitude });
-     
+
         // You can send the location data to your server or perform any other actions here.
         // Example: Sending data to a server using Axios
         axios
@@ -54,18 +60,22 @@ function App() {
     }
   };
 
-  const customIcon = new Icon ({
+  const customSelfIcon = new Icon({
     iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
     iconSize: [40, 41],
-  })
-  
+  });
+  const customNewIcon = new Icon({
+    iconUrl: "https://cdn-icons-png.flaticon.com/512/727/727606.png",
+    iconSize: [40, 41],
+  });
+
   return (
     <>
       <div>
         <h1>Real-Time GPS Tracking</h1>
         {location && (
           <p>
-            Latitude: {(location.latitude)}, Longitude: {location.longitude}
+            Latitude: {location.latitude}, Longitude: {location.longitude}
           </p>
         )}
       </div>
@@ -98,14 +108,16 @@ function App() {
           attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[32.06812727294921, 34.763810682209794]}>
-          <Popup>Location 1: Graffiti Art</Popup>
-        </Marker>
-        <Marker position={[32.068944247417505, 34.76781237229591]}>
-          <Popup>Location 2: Graffiti Art</Popup>
-        </Marker>
-        <Marker position={[location.latitude, location.longitude] } icon={customIcon}>
-          <Popup>This is me!   </Popup>
+        {markers.map((marker) => {
+          <Marker position={marker.geoCode} icon={customNewIcon}>
+            <Popup>{marker.popUp}</Popup>
+          </Marker>;
+        })}
+        <Marker
+          position={[location.latitude, location.longitude]}
+          icon={customSelfIcon}
+        >
+          <Popup>This is me! </Popup>
         </Marker>
       </MapContainer>
     </>
