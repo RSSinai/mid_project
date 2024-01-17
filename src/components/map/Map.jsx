@@ -2,6 +2,8 @@ import axios from "axios";
 import { Icon, L } from "leaflet";
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+
 import "./Map.css";
 
 const Map = () => {

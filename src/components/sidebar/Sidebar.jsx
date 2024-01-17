@@ -96,7 +96,6 @@ export default function PersistentDrawerLeft() {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
       <AppBar position="fixed" open={open} sx={{ backgroundColor: "#2C0E37" }}>
         <Toolbar>
           <IconButton
@@ -159,7 +158,6 @@ export default function PersistentDrawerLeft() {
           </div>
         </List>
         <Divider />
-
         <List>
           <h3>Partners discount:</h3>
           {["All mail", "Trash", "Spam"].map((text, index) => (
@@ -175,12 +173,8 @@ export default function PersistentDrawerLeft() {
         </List>
         <List>
           <h3>Statistics:</h3>
- 
         </List>
       </Drawer>
-      <Main open={open}>
-        <DrawerHeader />
-      </Main>
     </Box>
   );
 }

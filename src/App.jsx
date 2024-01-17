@@ -3,14 +3,13 @@ import "./App.css";
 import "leaflet/dist/leaflet.css";
 
 import Map from "./components/map/Map";
-import ClippedDrawer from "./components/sidebar/Sidebar";
-import { WidthFull } from "@mui/icons-material";
+import PersistentDrawerLeft from "./components/sidebar/Sidebar";
 
 function App() {
   return (
     <>
       <div className="map-container">
-        <ClippedDrawer />
+        <PersistentDrawerLeft/>
         <div><Map /></div>
       </div>
     </>
