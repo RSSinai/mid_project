@@ -1,7 +1,5 @@
 import "./App.css";
 
-import "leaflet/dist/leaflet.css";
-
 import Map from "./components/map/Map";
 import PersistentDrawerLeft from "./components/sidebar/Sidebar";
 

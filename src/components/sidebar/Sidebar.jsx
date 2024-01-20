@@ -2,7 +2,6 @@ import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
@@ -21,27 +20,11 @@ import MailIcon from "@mui/icons-material/Mail";
 import MapIcon from "@mui/icons-material/Map";
 import { useState, useEffect } from "react";
 import "./Sidebar.css";
+import LocationInput from "../inputSuggest/Input";
 
 const drawerWidth = 240;
 
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
-  })
-);
+
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -73,6 +56,7 @@ export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
+  const [input,setInput] = useState("")
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -93,6 +77,8 @@ export default function PersistentDrawerLeft() {
       navigator.geolocation.clearWatch(watchId);
     };
   }, []);
+
+  
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -155,6 +141,7 @@ export default function PersistentDrawerLeft() {
           <Divider />
           <div>
             <h3>Adding new makrer:</h3>
+            <LocationInput/>
           </div>
         </List>
         <Divider />
