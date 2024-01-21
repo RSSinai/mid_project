@@ -22,30 +22,6 @@ const Map = () => {
   }, []);
 
 
-  
-  // const markers = [
-  //   {
-  //     geocode: [32.06812727294921, 34.763810682209794],
-  //     popUp: "Hello, I am pop up 1",
-  //   },
-  //   {
-  //     geocode: [32.068944247417505, 34.76781237229591],
-  //     popUp: "Hello, I am pop up 2",
-  //   },
-  //   {
-  //       geocode: [32.07877529327112, 34.768482112951034],
-  //       popUp: "Hello, I am pop up 3",
-  //     },
-  //     {
-  //       geocode: [32.07653700745182, 34.76829265360192],
-  //       popUp: "Hello, I am pop up 4",
-  //     },
-  //     {
-  //       geocode: [32.079104879527705, 34.77068134589956],
-  //       popUp: "Hello, I am pop up 5",
-  //     },
-  // ];
-
   useEffect(() => {
     const watchId = navigator.geolocation.watchPosition(
       (position) => {
