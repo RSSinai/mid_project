@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Icon, L } from "leaflet";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -47,6 +47,13 @@ const Map = () => {
     iconSize: [40, 41],
   });
 
+
+// RECENTER BUTTON : 
+
+
+
+
+
   return (
     <div>
       <div>
@@ -55,6 +62,7 @@ const Map = () => {
       <MapContainer
         center={[32.07953127200945, 34.76931791534278]}
         zoom={18}
+        doubleClickZoom={true}
         scrollWheelZoom
       >
         <TileLayer
