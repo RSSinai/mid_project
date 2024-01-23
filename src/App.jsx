@@ -1,17 +1,23 @@
 import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Map from "./components/map/Map";
-import PersistentDrawerLeft from "./components/sidebar/Sidebar";
+import Map from "./pages/map/Map";
+import Main from "./pages/main/Main";
+import Login from "./pages/login/Login";
 
 function App() {
   return (
     <>
-      <div className="map-container">
-        <PersistentDrawerLeft/>
-        <div><Map /></div>
-      </div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Main/>}/>
+          <Route path="/map" element={<Map/>}/>
+          <Route path="/login" element={<Login/>}/>
+        </Routes>
+      </Router>
     </>
   );
 }
 
 export default App;
+

@@ -82,7 +82,7 @@ export default function PersistentDrawerLeft() {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar position="fixed" open={open} sx={{ backgroundColor: "#2C0E37" }}>
+      <AppBar position="fixed" open={open} sx={{ backgroundColor: "#FFFFFF" }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -100,13 +100,14 @@ export default function PersistentDrawerLeft() {
             component="div"
             sx={{ fontWeight: "bold", marginRight: "8px" }}
           >
-            Tourguide Builder
+            Walka.pro
           </Typography>
           <MapIcon />
         </Toolbar>
       </AppBar>
       <Drawer
         sx={{
+          
           width: drawerWidth,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
@@ -117,6 +118,7 @@ export default function PersistentDrawerLeft() {
         variant="persistent"
         anchor="left"
         open={open}
+        
       >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>

@@ -6,9 +6,9 @@ import "leaflet/dist/leaflet.css";
 
 import "./Map.css";
 
-const Map = () => {
+const MapComp = () => {
   const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
-
+  const [center, setCenter] = useState(null);
   const [markers, setMarkers] = useState([]);
   useEffect(() => {
     fetch('https://65ac10dffcd1c9dcffc78aea.mockapi.io/coordinates')
@@ -27,6 +27,7 @@ const Map = () => {
       (position) => {
         const { latitude, longitude } = position.coords;
         setLocation({ latitude, longitude });
+        setCenter({ lat: latitude, lng: longitude });
       }
     );
 
@@ -54,15 +55,16 @@ const Map = () => {
 
 
 
-  return (
+  return center ? (
     <div>
       <div>
 
       </div>
       <MapContainer
-        center={[32.07953127200945, 34.76931791534278]}
+        center={center}
         zoom={18}
         doubleClickZoom={true}
+
         scrollWheelZoom
       >
         <TileLayer
@@ -89,7 +91,7 @@ const Map = () => {
 ))}
       </MapContainer>
     </div>
-  );
+  ) : null ;
 };
 
-export default Map;
+export default MapComp;
