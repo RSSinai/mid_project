@@ -1,5 +1,5 @@
 *{
-    font-family: 'Inter', sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 
 input
@@ -10,4 +10,8 @@ input
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none; /* Remove default focus outline */
+}
+.component
+{
+    padding: 20px;
 }

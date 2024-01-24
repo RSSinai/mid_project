@@ -131,17 +131,17 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-          <div>
+          <div className="component">
             <h3>Your location:</h3>
             {location && (
               <div>
-                <p>Latitude: {location.latitude}</p>
-                <p>Longitude: {location.longitude}</p>
+                <div>Latitude: {location.latitude}</div>
+                <div>Longitude: {location.longitude}</div>
               </div>
             )}
           </div>
           <Divider />
-          <div>
+          <div className="component">
             <h3>Adding new makrer:</h3>
             <LocationInput/>
           </div>

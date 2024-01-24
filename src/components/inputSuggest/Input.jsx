@@ -70,10 +70,11 @@ const LocationInput = () => {
   
 
   return (
-    <div>
+    <div className='inputs'>
+      <div>Enter an address</div>
       <input
         type="text"
-        placeholder="Enter an address"
+        placeholder=""
         value={address}
         onChange={handleInputChange}
       />
@@ -84,7 +85,7 @@ const LocationInput = () => {
           </li>
         ))}
       </ul>
-      <p>Enter text:</p>
+      <div className='text'>Enter text:</div>
       <input
         type="text"
         placeholder=""
