@@ -102,7 +102,13 @@ export default function PersistentDrawerLeft() {
           >
             Walka.pro
           </Typography>
-          <MapIcon />
+          <div>
+            <img
+              src="https://i.ibb.co/gDhgqK0/Original-on-Transparent.png"
+              alt="Company Logo"
+              className="logo-map"
+            />
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
