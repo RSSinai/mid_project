@@ -5,8 +5,8 @@ import "./Map.css";
 
 const Map = () => {
   return (
-    <div>
-      <div className="map-container">
+    <div className="map-container">
+      <div >
         <PersistentDrawerLeft />
         <MapComp />
       </div>

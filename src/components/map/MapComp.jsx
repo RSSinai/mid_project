@@ -41,7 +41,7 @@ const MapComp = () => {
 
   const customSelfIcon = new Icon({
     iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
-    iconSize: [40, 41],
+    iconSize: [30, 30],
   });
   const customNewIcon = new Icon({
     iconUrl: "https://cdn-icons-png.flaticon.com/512/727/727606.png",
