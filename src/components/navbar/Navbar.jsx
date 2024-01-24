@@ -61,7 +61,7 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            WALKA.PRO
+            WALKA.
           </Typography>
 
           <Typography
@@ -80,7 +80,7 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            WALKA.PRO
+            WALKA.
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}></Box>
 
