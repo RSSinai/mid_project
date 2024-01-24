@@ -80,7 +80,7 @@ const MapComp = () => {
           marker.geocode ? (
             <Marker position={marker.geocode} icon={customNewIcon}>
               <Popup>
-                {marker.popUp}
+                <div><h1>{marker.popUp}</h1></div>
                 {marker.image}
                 <img src={marker.imageURL} alt="Marker Image" />
                 <button
