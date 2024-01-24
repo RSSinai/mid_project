@@ -7,6 +7,7 @@ const API_KEY = import.meta.env.VITE_REACT_APP_GOOGLE_KEY
 const LocationInput = () => {
   const [address, setAddress] = useState('');
   const [suggestions, setSuggestions] = useState([]);
+  const [textInput, setTextInput] = useState('');
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
@@ -88,9 +89,11 @@ const LocationInput = () => {
       </ul>
       <div className='text'>Enter text:</div>
       <input
-        type="text"
-        placeholder=""
-      />
+  type="text"
+  placeholder=""
+  value={textInput}
+  onChange={(e) => setTextInput(e.target.value)}
+/>
     </div>
   );
 };

@@ -76,7 +76,7 @@ const MapComp = () => {
           <Popup>This is me!</Popup>
         </Marker>
         {/* Mapping through the markers */}
-        {markers.map((marker) =>
+        {/* {markers.map((marker) =>
           marker.geocode ? (
             <Marker position={marker.geocode} icon={customNewIcon}>
               <Popup>
@@ -93,7 +93,7 @@ const MapComp = () => {
             // You can replace the following with your own loading or placeholder component
             <div>Loading...</div>
           )
-        )}
+        )} */}
         <div className="routing-machine">
           <Routing center={center} selectedCoordinates={selectedCoordinates} />
         </div>
