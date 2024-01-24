@@ -3,10 +3,9 @@ import { Icon, L } from "leaflet";
 import React, { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
-import 'leaflet/dist/leaflet.css';
-import 'leaflet-routing-machine';
-
+import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
+import "leaflet/dist/leaflet.css";
+import "leaflet-routing-machine";
 
 import "./Map.css";
 import Routing from "../routing/Routing";
@@ -16,33 +15,28 @@ const MapComp = () => {
   const [center, setCenter] = useState(null);
   const [markers, setMarkers] = useState([]);
   useEffect(() => {
-    fetch('https://65ac10dffcd1c9dcffc78aea.mockapi.io/coordinates')
+    fetch("https://65ac10dffcd1c9dcffc78aea.mockapi.io/coordinates")
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        console.log('what',data);
+        console.log("what", data);
         setMarkers(data);
       });
   }, []);
 
-
   useEffect(() => {
-    const watchId = navigator.geolocation.watchPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        setLocation({ latitude, longitude });
-        setCenter({ lat: latitude, lng: longitude });
-      }
-    );
+    const watchId = navigator.geolocation.watchPosition((position) => {
+      const { latitude, longitude } = position.coords;
+      setLocation({ latitude, longitude });
+      setCenter({ lat: latitude, lng: longitude });
+    });
 
     // Cleanup function to clear the watch when the component unmounts
     return () => {
       navigator.geolocation.clearWatch(watchId);
     };
   }, []);
-
-
 
   const customSelfIcon = new Icon({
     iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
@@ -53,12 +47,9 @@ const MapComp = () => {
     iconSize: [40, 41],
   });
 
-
   return center ? (
     <div>
-      <div>
-
-      </div>
+      <div></div>
       <MapContainer
         center={center}
         zoom={18}
@@ -69,7 +60,7 @@ const MapComp = () => {
           attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        
+
         <Marker
           position={[location.latitude, location.longitude]}
           icon={customSelfIcon}
@@ -77,21 +68,22 @@ const MapComp = () => {
           <Popup>This is me! </Popup>
         </Marker>
         {/* Mapping through the markers */}
-        {markers.map((marker) => (
-  marker.geocode ? (
-    <Marker position={marker.geocode} icon={customNewIcon}> 
-      <Popup>{marker.popUp}</Popup>
-    </Marker>
-    
-  ) : (
-    // You can replace the following with your own loading or placeholder component
-    <div>Loading...</div>
-  )
-))}
-      <Routing/>
+        {markers.map((marker) =>
+          marker.geocode ? (
+            <Marker position={marker.geocode} icon={customNewIcon}>
+              <Popup>{marker.popUp}</Popup>
+            </Marker>
+          ) : (
+            // You can replace the following with your own loading or placeholder component
+            <div>Loading...</div>
+          )
+        )}
+        <div className="routing-machine">
+          <Routing />
+        </div>
       </MapContainer>
     </div>
-  ) : null ;
+  ) : null;
 };
 
 export default MapComp;

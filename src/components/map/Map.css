@@ -1,8 +1,14 @@
 .leaflet-container {
-    height: 80vh;
-    width: 90%;
-    border-radius: 2rem;
-    display:block;
-margin:0 auto;
+  height: 80vh;
+  width: 90%;
+  border-radius: 2rem;
+  display: block;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 900px) {
+  .leaflet-routing-container {
+    width: 32%;
+    
   }
-  
+}

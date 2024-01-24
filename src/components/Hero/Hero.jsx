@@ -7,7 +7,7 @@ const Hero = () => {
           <div className="hero-content">
             <h1>Walka.pro</h1>
             <h2>Build an interactive city tour!</h2>
-            <button class="button">Book Now</button>
+            <button class="button">LOG IN</button>
           </div>
         </div>
       );
