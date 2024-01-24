@@ -58,10 +58,10 @@ const LoginComp = ({ email, password, setEmail, setPassword, handleLogin }) => {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <Avatar sx={{ m: 1, bgcolor: "rgb(255, 104, 22)" }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h5" >
               Sign in
             </Typography>
             <Box
@@ -102,7 +102,8 @@ const LoginComp = ({ email, password, setEmail, setPassword, handleLogin }) => {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 2,bgcolor:'rgb(255, 104, 22)' }}
+                
               >
                 Sign In
               </Button>
@@ -120,7 +121,6 @@ const LoginComp = ({ email, password, setEmail, setPassword, handleLogin }) => {
               </Grid>
             </Box>
           </Box>
-          <Copyright sx={{ mt: 8, mb: 4 }} />
         </Container>
       </ThemeProvider>
     </div>
