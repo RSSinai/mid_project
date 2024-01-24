@@ -35,6 +35,7 @@ const LocationInput = () => {
 
     // You may want to fetch the exact coordinates for the selected address using the Geocoding API
     fetchCoordinates(selectedAddress);
+    
   };
 
   const fetchCoordinates = async (selectedAddress) => {
@@ -61,7 +62,7 @@ const LocationInput = () => {
 
       // // Update state with the new array (assuming the response contains the updated array)
       // setNewArray(responseAPI.data.updatedArray);
-
+      window.location.reload();
     } catch (error) {
       console.error('Error fetching coordinates:', error);
     }
