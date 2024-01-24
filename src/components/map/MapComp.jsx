@@ -3,8 +3,13 @@ import { Icon, L } from "leaflet";
 import React, { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
+import 'leaflet/dist/leaflet.css';
+import 'leaflet-routing-machine';
+
 
 import "./Map.css";
+import Routing from "../routing/Routing";
 
 const MapComp = () => {
   const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
@@ -49,12 +54,6 @@ const MapComp = () => {
   });
 
 
-// RECENTER BUTTON : 
-
-
-
-
-
   return center ? (
     <div>
       <div>
@@ -64,14 +63,13 @@ const MapComp = () => {
         center={center}
         zoom={18}
         doubleClickZoom={true}
-
         scrollWheelZoom
       >
         <TileLayer
           attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-
+        
         <Marker
           position={[location.latitude, location.longitude]}
           icon={customSelfIcon}
@@ -84,11 +82,13 @@ const MapComp = () => {
     <Marker position={marker.geocode} icon={customNewIcon}> 
       <Popup>{marker.popUp}</Popup>
     </Marker>
+    
   ) : (
     // You can replace the following with your own loading or placeholder component
     <div>Loading...</div>
   )
 ))}
+      <Routing/>
       </MapContainer>
     </div>
   ) : null ;
