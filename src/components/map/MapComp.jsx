@@ -82,6 +82,7 @@ const MapComp = () => {
               <Popup>
                 {marker.popUp}
                 {marker.image}
+                <img src={marker.imageURL} alt="Marker Image" />
                 <button
                   onClick={() => sendCoordinateNavigation(marker.geocode)}
                 >
