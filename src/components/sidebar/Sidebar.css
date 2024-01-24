@@ -1,3 +1,13 @@
 *{
     font-family: 'Inter', sans-serif;
 }
+
+input
+{
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none; /* Remove default focus outline */
+}

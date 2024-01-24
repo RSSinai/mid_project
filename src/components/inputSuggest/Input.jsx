@@ -84,6 +84,11 @@ const LocationInput = () => {
           </li>
         ))}
       </ul>
+      <p>Enter text:</p>
+      <input
+        type="text"
+        placeholder=""
+      />
     </div>
   );
 };
