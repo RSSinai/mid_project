@@ -6,7 +6,7 @@
     margin-bottom: 5%;
     gap: 2.5%;
 }
-h2{
+.service-title{
     display: flex;
     align-items: center;
     justify-content: center;

@@ -5,7 +5,7 @@ import "./Services.css";
 const Services = () => {
   return (
     <>
-      <h2>Services</h2>
+      <h2 className="service-title">Services</h2>
       <div className="cards-line">
         <CardComp className="cardMUI"/>
         <CardComp className="cardMUI"/>
