@@ -1,7 +1,6 @@
 .cards-line
 {
     display: flex;
-    align-items: center;
     justify-content: center;
     margin-bottom: 5%;
     gap: 2.5%;

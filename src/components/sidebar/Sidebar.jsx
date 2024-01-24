@@ -18,9 +18,11 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import MapIcon from "@mui/icons-material/Map";
+import FreeBreakfastIcon from '@mui/icons-material/FreeBreakfast';
 import { useState, useEffect } from "react";
 import "./Sidebar.css";
 import LocationInput from "../inputSuggest/Input";
+import KitchenIcon from '@mui/icons-material/Kitchen';
 
 const drawerWidth = 240;
 
@@ -155,19 +157,17 @@ export default function PersistentDrawerLeft() {
         <Divider />
         <List>
           <h3>Partners discount:</h3>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
+          {["10% OFF", "50% OFF", "100% OFF"].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <FreeBreakfastIcon/>
+                <KitchenIcon/>
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>
             </ListItem>
           ))}
-        </List>
-        <List>
-          <h3>Statistics:</h3>
         </List>
       </Drawer>
     </Box>
