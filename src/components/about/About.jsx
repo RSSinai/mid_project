@@ -6,14 +6,14 @@ import "./About.css";
 const About = () => {
   return (
     <div className="container">
-     
       <div className="paragraph">
-      <h2>About</h2>
+        <h2>About</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam
-          impedit earum, beatae, molestias animi perspiciatis esse, cupiditate
-          aperiam sequi possimus vero veritatis repudiandae non sunt nesciunt.
-          Optio dicta voluptates animi?
+          Every step with Walka.pro City Tours is a step into the soul of a
+          city. Immerse yourself in the local culture, history, and vibrant
+          atmosphere as we guide you through an exploration of the urban
+          landscape. Walk with us and experience the true essence of cities
+          around the world.
         </p>
       </div>
 

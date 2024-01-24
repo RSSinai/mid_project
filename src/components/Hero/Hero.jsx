@@ -5,8 +5,8 @@ const Hero = () => {
     return (
         <div className="hero-section">
           <div className="hero-content">
-            <h1>Your Hero Title</h1>
-            <p>Your hero description goes here.</p>
+            <h1>Walka.pro</h1>
+            <h2>Build an interactive city tour!</h2>
             <button class="button">Book Now</button>
           </div>
         </div>

@@ -7,8 +7,8 @@ const Footer = () => {
   return (
     <footer className="footer-container">
       <div className="footer-content">
-        <p>&copy; 2024 Your Company</p>
-        <p>Contact: your.email@example.com</p>
+        <p>&copy; 2024 Walka.pro</p>
+        <p>Contact: rony.sinai@gmail.com</p>
       </div>
     </footer>
   );
