@@ -12,23 +12,27 @@ import LoginComp from "../../components/login/LoginComp";
 
 // Replace with your Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyAye_dSjI8Fwiu9qKg9VxrFT4DrATSD1B4",
-  authDomain: "walka-36e17.firebaseapp.com",
-  projectId: "walka-36e17",
-  storageBucket: "walka-36e17.appspot.com",
-  messagingSenderId: "846511120002",
-  appId: "1:846511120002:web:91d727c768433e7d1cde9b",
-  measurementId: "G-DXYLWM5CLC",
+  apiKey: "AIzaSyBYlZRaGUeQvoJN9kssovCzcs7tnho4toE",
+  authDomain: "molten-calling-280520.firebaseapp.com",
+  projectId: "molten-calling-280520",
+  storageBucket: "molten-calling-280520.appspot.com",
+  messagingSenderId: "909615676817",
+  appId: "1:909615676817:web:c1ede874ce86e46b07ee30",
+  measurementId: "G-T8V0BWK0QW"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
+export const auth = getAuth(app);
+
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  console.log('email',email)
+  console.log('pass',password)
 
   const handleLogin = async () => {
     try {
