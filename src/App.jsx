@@ -9,9 +9,9 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" exact element={<Main />} />
-          <Route path="/map" element={<Map />} />
-          <Route path="/login" element={<Login />} />
+          <Route path={"/"} exact element={<Main />} />
+          <Route path={"/map"} element={<Map />} />
+          <Route path={"/login"} element={<Login />} />
         </Routes>
       </Router>
     </>
