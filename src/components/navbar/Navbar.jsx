@@ -41,7 +41,7 @@ function ResponsiveAppBar() {
         <Toolbar disableGutters>
           <div>
             <img
-              src="src/assets/High Resolution Logo Files 2/logo.png"
+              src="https://i.ibb.co/3CQSzCX/logo.png"
               alt="Company Logo"
               className="logo"
             />
