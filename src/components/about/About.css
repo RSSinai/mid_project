@@ -28,12 +28,17 @@
 
   }
 
+  .info
+  {
+    font-size: 24px;
+  }
+
 
   @media screen and (max-width: 1020px) {
     .paragraph {
       padding: 20px;
     }
-    p{
+    .info{
         font-size: 25px;
         margin-top: 20%;
     }
@@ -47,7 +52,7 @@
     .paragraph {
       padding: 20px;
     }
-    p{
+    .info{
         font-size: 18px;
         margin-top: 20%;
     }
@@ -61,7 +66,7 @@
     .paragraph {
       padding: 20px;
     }
-    p{
+    .info{
         font-size: 15px;
         margin-top: 20%;
     }

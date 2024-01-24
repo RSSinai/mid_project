@@ -14,6 +14,8 @@ const MapComp = () => {
   const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
   const [center, setCenter] = useState(null);
   const [markers, setMarkers] = useState([]);
+  const [selectedCoordinates, setSelectedCoordinates] = useState(null);
+
   useEffect(() => {
     fetch("https://65ac10dffcd1c9dcffc78aea.mockapi.io/coordinates")
       .then((res) => {
@@ -47,6 +49,12 @@ const MapComp = () => {
     iconSize: [40, 41],
   });
 
+  function sendCoordinateNavigation(coordinates) {
+    // Update the selectedCoordinates state
+    setSelectedCoordinates(coordinates);
+    console.log(selectedCoordinates);
+  }
+
   return center ? (
     <div>
       <div></div>
@@ -65,13 +73,21 @@ const MapComp = () => {
           position={[location.latitude, location.longitude]}
           icon={customSelfIcon}
         >
-          <Popup>This is me! </Popup>
+          <Popup>This is me!</Popup>
         </Marker>
         {/* Mapping through the markers */}
         {markers.map((marker) =>
           marker.geocode ? (
             <Marker position={marker.geocode} icon={customNewIcon}>
-              <Popup>{marker.popUp}</Popup>
+              <Popup>
+                {marker.popUp}
+                {marker.image}
+                <button
+                  onClick={() => sendCoordinateNavigation(marker.geocode)}
+                >
+                  Navigate
+                </button>
+              </Popup>
             </Marker>
           ) : (
             // You can replace the following with your own loading or placeholder component
@@ -79,7 +95,7 @@ const MapComp = () => {
           )
         )}
         <div className="routing-machine">
-          <Routing />
+          <Routing center={center} selectedCoordinates={selectedCoordinates} />
         </div>
       </MapContainer>
     </div>
