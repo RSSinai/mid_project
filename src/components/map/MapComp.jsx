@@ -1,6 +1,5 @@
-import axios from "axios";
-import { Icon, L } from "leaflet";
-import React, { useState, useEffect, useRef } from "react";
+import { Icon } from "leaflet";
+import { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
@@ -76,11 +75,13 @@ const MapComp = () => {
           <Popup>This is me!</Popup>
         </Marker>
         {/* Mapping through the markers */}
-        {markers.map((marker) =>
+        {markers.map((marker, index) =>
           marker.geocode ? (
-            <Marker position={marker.geocode} icon={customNewIcon}>
+            <Marker position={marker.geocode} icon={customNewIcon} key={index}>
               <Popup>
-                <div><h1>{marker.popUp}</h1></div>
+                <div>
+                  <h1>{marker.popUp}</h1>
+                </div>
                 {marker.image}
                 <img src={marker.imageURL} alt="Marker Image" />
                 <button
@@ -92,7 +93,7 @@ const MapComp = () => {
             </Marker>
           ) : (
             // You can replace the following with your own loading or placeholder component
-            <div>Loading...</div>
+            <div key={index}>Loading...</div>
           )
         )}
         <div className="routing-machine">
