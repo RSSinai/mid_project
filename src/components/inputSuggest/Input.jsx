@@ -1,5 +1,4 @@
-// LocationInput.js
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 const API_KEY = import.meta.env.VITE_REACT_APP_GOOGLE_KEY;
@@ -10,6 +9,7 @@ const LocationInput = () => {
   const [textInput, setTextInput] = useState("");
   const [imageInput, setImageInput] = useState("");
 
+  // Handles input change for address and fetches suggestions
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setAddress(inputValue);
@@ -18,29 +18,29 @@ const LocationInput = () => {
     fetchSuggestions(inputValue);
   };
 
+  // Fetches address suggestions using the Google Places API
   const fetchSuggestions = async (input) => {
     try {
       const response = await axios.get(
         `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${input}&key=${API_KEY}`
       );
-
-      const suggestions = response.data.predictions.map(
-        (prediction) => prediction.description
-      );
-      setSuggestions(suggestions);
+      console.log("API Response:", response.data);
+      setSuggestions(response.data.predictions);
     } catch (error) {
       console.error("Error fetching suggestions:", error);
     }
   };
 
-  const handleSelect = (selectedAddress) => {
-    // Perform any additional actions when an address is selected
+  // Handles the selection of a suggested address and fetches coordinates
+  const handleSelect = (suggestion) => {
+    const selectedAddress = suggestion.description;
     console.log("Selected Address:", selectedAddress);
 
-    // You may want to fetch the exact coordinates for the selected address using the Geocoding API
+    // Fetch the coordinates of the selected address
     fetchCoordinates(selectedAddress);
   };
 
+  // Fetches coordinates using the Google Geocoding API
   const fetchCoordinates = async (selectedAddress) => {
     try {
       const response = await axios.get(
@@ -49,25 +49,22 @@ const LocationInput = () => {
         )}&key=${API_KEY}`
       );
 
-      // Extract latitude and longitude from the response
       const { lat, lng } = response.data.results[0].geometry.location;
-
       console.log("Coordinates for", selectedAddress, ":", { lat, lng });
 
       const apiUrl = "https://65ac10dffcd1c9dcffc78aea.mockapi.io/coordinates";
 
-      // Simulate the data you want to add to the array
+      // Simulating the data to send to the mock API
       const newData = {
         geocode: [lat, lng],
         popUp: textInput,
         imageURL: imageInput,
       };
 
-      // Make a POST request to the mock API endpoint
+      // Make a POST request to the mock API
       const responseAPI = await axios.post(apiUrl, newData);
 
-      // // Update state with the new array (assuming the response contains the updated array)
-      // setNewArray(responseAPI.data.updatedArray);
+      console.log("API Post Response:", responseAPI.data);
       window.location.reload();
     } catch (error) {
       console.error("Error fetching coordinates:", error);
@@ -76,32 +73,34 @@ const LocationInput = () => {
 
   return (
     <div className="inputs">
-
       <div className="text">Enter text:</div>
       <input
         type="text"
-        placeholder=""
+        placeholder="Enter some text"
         value={textInput}
         onChange={(e) => setTextInput(e.target.value)}
       />
+
       <div className="text">Enter Image URL:</div>
       <input
         type="text"
-        placeholder=""
+        placeholder="Enter image URL"
         value={imageInput}
         onChange={(e) => setImageInput(e.target.value)}
       />
-      <div>Enter an address</div>
+
+      <div>Enter an address:</div>
       <input
         type="text"
-        placeholder=""
         value={address}
         onChange={handleInputChange}
+        placeholder="Enter address"
       />
-            <ul>
+
+      <ul>
         {suggestions.map((suggestion, index) => (
           <li key={index} onClick={() => handleSelect(suggestion)}>
-            {suggestion}
+            {suggestion.description}
           </li>
         ))}
       </ul>

@@ -15,18 +15,14 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import MapIcon from "@mui/icons-material/Map";
-import FreeBreakfastIcon from '@mui/icons-material/FreeBreakfast';
+
+import FreeBreakfastIcon from "@mui/icons-material/FreeBreakfast";
 import { useState, useEffect } from "react";
 import "./Sidebar.css";
 import LocationInput from "../inputSuggest/Input";
-import KitchenIcon from '@mui/icons-material/Kitchen';
+import KitchenIcon from "@mui/icons-material/Kitchen";
 
 const drawerWidth = 240;
-
-
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -58,7 +54,7 @@ export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
-  const [input,setInput] = useState("")
+  const [input, setInput] = useState("");
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -80,11 +76,13 @@ export default function PersistentDrawerLeft() {
     };
   }, []);
 
-  
-
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar position="fixed" open={open} sx={{ backgroundColor: "#FFFFFF", color:'rgb(255, 104, 22)' }}>
+      <AppBar
+        position="fixed"
+        open={open}
+        sx={{ backgroundColor: "#FFFFFF", color: "rgb(255, 104, 22)" }}
+      >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -115,7 +113,6 @@ export default function PersistentDrawerLeft() {
       </AppBar>
       <Drawer
         sx={{
-          
           width: drawerWidth,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
@@ -126,7 +123,6 @@ export default function PersistentDrawerLeft() {
         variant="persistent"
         anchor="left"
         open={open}
-        
       >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
@@ -151,18 +147,18 @@ export default function PersistentDrawerLeft() {
           <Divider />
           <div className="component">
             <h3>Adding new makrer:</h3>
-            <LocationInput/>
+            <LocationInput />
           </div>
         </List>
         <Divider />
         <List>
           <h3>Partners discount:</h3>
           {["10% OFF", "50% OFF", "100% OFF"].map((text, index) => (
-            <ListItem key={text} disablePadding>
+            <ListItem key={index} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                <FreeBreakfastIcon/>
-                <KitchenIcon/>
+                  <FreeBreakfastIcon />
+                  <KitchenIcon />
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>
